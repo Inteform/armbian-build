@@ -11,7 +11,7 @@ diff -Naur linux-4.14/arch/arm64/boot/dts/allwinner/Makefile linux-new/arch/arm6
 diff -Naur linux-4.14/arch/arm64/boot/dts/allwinner/sun50i-a64-helpera64.dts linux-new/arch/arm64/boot/dts/allwinner/sun50i-a64-helpera64.dts
 --- linux-4.14/arch/arm64/boot/dts/allwinner/sun50i-a64-helpera64.dts	1969-12-31 21:00:00.000000000 -0300
 +++ linux-new/arch/arm64/boot/dts/allwinner/sun50i-a64-helpera64.dts	2018-04-30 11:41:24.660331793 -0300
-@@ -0,0 +1,232 @@
+@@ -0,0 +1,261 @@
 +/*
 + * Copyright (c) 2016 ARM Ltd.
 + *
@@ -74,8 +74,25 @@ diff -Naur linux-4.14/arch/arm64/boot/dts/allwinner/sun50i-a64-helpera64.dts lin
 +	};
 +};
 +
++&de {
++  status = "okay";
++};
++
++&ehci0 {
++  status = "okay";
++};   
++
 +&ehci1 {
 +	status = "okay";
++};
++
++&hdmi {
++  hvcc-supply = <&reg_dc1sw>;
++  status = "okay";
++};
++
++&mixer1 {
++  status = "okay";
 +};
 +
 +&i2c1 {
@@ -116,6 +133,10 @@ diff -Naur linux-4.14/arch/arm64/boot/dts/allwinner/sun50i-a64-helpera64.dts lin
 +	non-removable;
 +	cap-mmc-hw-reset;
 +	status = "okay";
++};
++
++&ohci0 {
++  status = "okay";
 +};
 +
 +&ohci1 {
@@ -227,6 +248,14 @@ diff -Naur linux-4.14/arch/arm64/boot/dts/allwinner/sun50i-a64-helpera64.dts lin
 +
 +&reg_rtc_ldo {
 +	regulator-name = "vcc-rtc";
++};
++
++&simplefb_hdmi {
++  vcc-hdmi-supply = <&reg_dldo1>;
++};
++
++&tcon1 {
++  status = "okay";
 +};
 +
 +&uart0 {
